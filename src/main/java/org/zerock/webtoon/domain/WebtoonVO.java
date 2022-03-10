@@ -7,7 +7,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @ToString
-public class WebToonVO {
+public class WebtoonVO {
     private Integer wno;
     private String title;
     private String author;

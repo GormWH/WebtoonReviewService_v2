@@ -10,7 +10,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ReviewVO {
-
     private Integer rno;
     private Integer wno;
     private String id;
