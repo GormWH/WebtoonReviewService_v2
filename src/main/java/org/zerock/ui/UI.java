@@ -3,9 +3,11 @@ package org.zerock.ui;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.zerock.review.service.ReviewService;
 import org.zerock.webtoon.domain.WebToonVO;
 import org.zerock.webtoon.service.WebToonService;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -75,7 +77,10 @@ public class UI {
 
     // 웹툰 목록 출력
     private void viewWebtoons() {
-        Arrays.stream(webtoonService.getAll()).forEach(webtoon -> System.out.println(webtoon));
+        ArrayList<WebToonVO> webToons = webtoonService.getAll();
+        for (WebToonVO webtoon : webToons) {
+            System.out.println(webtoon);
+        }
     }
 
     // 웹툰 정렬해서 출력
@@ -118,7 +123,8 @@ public class UI {
         Integer wno = Integer.parseInt(action);
         WebToonVO webtoon = webtoonService.getOne(wno);
         UserVO userCopy = user.clone();
-        reviewService.addReview(webtoon, user);
+        int score = inputInteger("점수를 메겨주세요.");
+        reviewService.addReview(webtoon.getWno(), user.getId(), score);
     }
 
     private String inputString(String msg) {

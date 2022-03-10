@@ -32,4 +32,8 @@ public class WebToonService {
         }
         return result;
     }
+
+    public ArrayList<WebToonVO> getAll() {
+        return webToonDAO.getWebToons();
+    }
 }
